@@ -1,0 +1,22 @@
+div#add-bar {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 4em;
+    width: 100vw;
+}
+
+input {
+    border: none;
+    border-radius: 0.25em;
+    height: 2em;
+}
+
+button#submit {
+    background-color: var(--fg);
+    border-radius: 0.25em;
+    height: 2.1em;
+    border: none;
+    margin-left: 0.5em;
+
+}
