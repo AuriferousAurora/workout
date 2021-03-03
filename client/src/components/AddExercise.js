@@ -1,7 +1,7 @@
 import './AddExercise.css';
 import { useContext, useState } from 'react';
-import { ExerciseContext } from './context/ExerciseContext';
-import { baseURL } from './globals';
+import { ExerciseContext } from '../context/ExerciseContext';
+import { baseURL } from '../globals';
 
 export default function AddExercise() {
 

@@ -1,6 +1,6 @@
 import './App.css';
-import AddExercise from './AddExercise';
-import Exercises from './Exercises';
+import AddExercise from './components/AddExercise';
+import Exercises from './components/Exercises';
 
 function App() {
   return (

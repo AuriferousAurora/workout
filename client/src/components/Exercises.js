@@ -1,7 +1,7 @@
 import './Exercises.css'
 import { useContext, useEffect } from 'react';
-import { ExerciseContext } from './context/ExerciseContext';
-import { baseURL } from './globals';
+import { ExerciseContext } from '../context/ExerciseContext';
+import { baseURL } from '../globals';
 
 export default function Exercises() {
     const { exercises, setExercises } = useContext(ExerciseContext);
