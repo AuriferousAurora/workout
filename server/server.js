@@ -41,4 +41,18 @@ app.post('/exercises', async (req, res) => {
     }
 });
 
+app.delete('/exercises/:id', async (req, res) => {
+    try {
+        const results = await db.query('DELETE FROM exercises WHERE id = $1 returning *;', [req.params.id]);
+        console.log(results);
+        res.status(200).json({
+            status: 'success',
+            results: results.rows.length,
+            data: { 'exercise': results.rows[0] }
+        })
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 app.listen(port, () => console.log('Server is up and listening on port ' + port));

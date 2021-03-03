@@ -9,10 +9,22 @@ div.content__main {
 }
 
 div.exercise {
-    border-radius: 0.25em;
-    background-color: var(--fg);
+
     height: auto;
     margin: 1em;
     min-width: 7em;
+
+}
+div.exercise__header {
+    background-color: var(--fg);
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    padding: 1em;
+}
+
+div.exercise__options {
+    background-color: #fff;
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
     padding: 1em;
 }

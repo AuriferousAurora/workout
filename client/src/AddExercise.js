@@ -1,8 +1,9 @@
 import './AddExercise.css';
 import { useContext, useState } from 'react';
 import { ExerciseContext } from './context/ExerciseContext';
+import { baseURL } from './globals';
 
-export default function AddExercise({ exercises }) {
+export default function AddExercise() {
 
     const [exercise, setExercise] = useState('');
     const { addExercises } = useContext(ExerciseContext);
@@ -13,14 +14,15 @@ export default function AddExercise({ exercises }) {
 
         try {
             const data = { name: exercise };
-            const response = await fetch('http://localhost:3001/exercises', {
+            const response = await fetch(baseURL + 'exercises', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             }).then((res) => res.json());
-            addExercises(response.data.exercise)
+            console.log(response);
+            addExercises(response.data.exercises[0]);
         } catch (err) {
             console.log(err);
         }
