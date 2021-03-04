@@ -1,0 +1,1 @@
+- may want to split addExercise component out into more generic 'add item to database/context' component

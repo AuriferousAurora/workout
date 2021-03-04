@@ -1,6 +1,7 @@
 import './App.css';
 import AddExercise from './components/AddExercise';
 import Exercises from './components/Exercises';
+import Workouts from './components/Workouts';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -21,8 +22,7 @@ function App() {
               <Exercises />
             </Route>
             <Route exact path="/workouts">
-              <AddExercise />
-              <Exercises />
+              <Workouts />
             </Route>
           </Switch>
         </Router>
