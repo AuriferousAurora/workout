@@ -1,12 +1,18 @@
 import './Workouts.css'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ExerciseContext } from '../context/ExerciseContext';
 import { baseURL } from '../globals';
+import useFetch from  '../hooks/useFetch';
 
 export default function Workouts() {
     const [search, setSearch ] = useState([]);
 
-    const { exercises } = useContext(ExerciseContext);
+    const { exercises, setExercises } = useContext(ExerciseContext);
+    const { data } = useFetch(baseURL + 'exercises');
+
+    useEffect(() => {
+        if (data) setExercises(data.data.exercises);
+    }, [data])
 
     const filterdExercises = search.length === 0 ? exercises :
         exercises.filter(exercise => exercise.name.toLowerCase().includes(search.toLowerCase()))

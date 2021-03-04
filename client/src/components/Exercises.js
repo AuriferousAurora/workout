@@ -2,19 +2,15 @@ import './Exercises.css'
 import { useContext, useEffect } from 'react';
 import { ExerciseContext } from '../context/ExerciseContext';
 import { baseURL } from '../globals';
+import useFetch from  '../hooks/useFetch';
 
 export default function Exercises() {
     const { exercises, setExercises } = useContext(ExerciseContext);
+    const { data } = useFetch(baseURL + 'exercises');
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await fetch(baseURL + 'exercises').then((res) => res.json())
-                setExercises(response.data.exercises);
-            } catch (err) { console.log(err); }
-        }
-        fetchData();
-      }, [])
+        if (data) setExercises(data.data.exercises);
+    }, [data])
 
     const handleDelete = async (id) => {
         try {
