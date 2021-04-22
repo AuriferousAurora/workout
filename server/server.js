@@ -41,6 +41,21 @@ app.post('/exercises', async (req, res) => {
     }
 });
 
+app.put('/exercises/:id', async (req, res) => {
+    try {
+        console.log(req.body);
+        const results = await db.query('UPDATE exercises SET name = $1 WHERE id = $2 returning *;', [req.body.name, req.params.id]);
+        console.log(results);
+        res.status(200).json({
+            status: 'success',
+            results: results.rows.length,
+            data: { 'exercises': results.rows }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+} )
+
 app.delete('/exercises/:id', async (req, res) => {
     try {
         const results = await db.query('DELETE FROM exercises WHERE id = $1 returning *;', [req.params.id]);
