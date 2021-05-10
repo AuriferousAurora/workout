@@ -16,7 +16,7 @@ export default function Exercises() {
 
     return (
         <div className="content__main">
-            { exercises.map( e => <Exercise i={e.id} n={e.name} /> ) }
+            { exercises.map( e => <Exercise key={e.id} i={e.id} n={e.name} /> ) }
         </div>
     )
 }

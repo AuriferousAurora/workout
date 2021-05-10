@@ -43,7 +43,7 @@ app.post('/exercises', async (req, res) => {
 
 app.put('/exercises/:id', async (req, res) => {
     try {
-        console.log(req.body);
+        console.log(req);
         const results = await db.query('UPDATE exercises SET name = $1 WHERE id = $2 returning *;', [req.body.name, req.params.id]);
         console.log(results);
         res.status(200).json({
