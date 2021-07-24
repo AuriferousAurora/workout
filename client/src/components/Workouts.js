@@ -1,37 +1,21 @@
-import './Workouts.css'
+import Workout from './Workout';
 import { useContext, useEffect, useState } from 'react';
-import { ExerciseContext } from '../context/ExerciseContext';
 import { baseURL } from '../globals';
 import useFetch from  '../hooks/useFetch';
 
 export default function Workouts() {
-    const [search, setSearch ] = useState([]);
+    const [workouts, setWorkouts ] = useState([]);
 
-    const { exercises, setExercises } = useContext(ExerciseContext);
-    const { data } = useFetch(baseURL + 'exercises');
+    const { data } = useFetch(baseURL + 'workouts');
+    console.log(data);
 
     useEffect(() => {
-        if (data) setExercises(data.data.exercises);
+        if (data) setWorkouts(data.data.workouts);
     }, [data])
-
-    const filterdExercises = search.length === 0 ? exercises :
-        exercises.filter(exercise => exercise.name.toLowerCase().includes(search.toLowerCase()))
-
 
     return (
         <div className="content__main">
-            <input type="text" 
-                placeholder="select exercise" 
-                value={search}
-                onChange={(e) => setSearch(e.target.value)} />
-            <div>
-                {filterdExercises.map(exercise => {
-                    return (
-                        <div>{exercise.name}</div>
-                    )
-                })}
-            </div>
-            
+            { workouts.map( e => <Workout key={e.id} i={e.id} n={e.name} /> ) }
         </div>
     );
 }

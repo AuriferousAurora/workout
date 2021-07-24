@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.get('/exercises', async (req, res) => {
     try {
-        const results = await db.query('SELECT * FROM exercises');
+        const results = await db.query('SELECT * FROM exercises;');
         res.status(200).json({
             status: 'success',
             results: results.rows.length,
@@ -65,6 +65,33 @@ app.delete('/exercises/:id', async (req, res) => {
             results: results.rows.length,
             data: { 'exercise': results.rows[0] }
         })
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.get('/workouts', async (req, res) => {
+    try {
+        const results = await db.query('SELECT * FROM workouts;');
+        res.status(200).json({
+            status: 'success',
+            results: results.rows.length,
+            data: { 'workouts': results.rows }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.post('/workouts', async (req, res) => {
+    try {
+        const results = await db.query('INSERT INTO workouts (id, name) VALUES (gen_random_uuid(), $1) returning *;', [req.body.name]);
+        console.log(results);
+        res.status(200).json({
+            status: 'success',
+            results: results.rows.length,
+            data: { 'workout': results.rows }
+        });
     } catch (error) {
         console.log(error);
     }
