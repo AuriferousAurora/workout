@@ -27,7 +27,7 @@ function App() {
             <Route exact path="/workouts">
               <Workouts />
             </Route>
-            <Route exact path="/edit-workouts">
+            <Route exact path="/workouts/edit/:id">
               <EditWorkout />
             </Route>
             <Route exact path="/add-workout">

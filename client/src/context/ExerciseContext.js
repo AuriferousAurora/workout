@@ -7,7 +7,6 @@ export const ExerciseContextProvider = props => {
 
     const addExercises = (exercise) => {
         setExercises([...exercises, exercise]);
-        console.log('bbbbbbbb');
     }
 
     const updateExercise = (id, name)  => {
