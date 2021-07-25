@@ -5,10 +5,15 @@ import { ExerciseContext } from '../context/ExerciseContext';
 import { baseURL } from '../globals';
 import useFetch from  '../hooks/useFetch';
 
+import AddExerciseInstance from './AddExerciseInstance';
+
 export default function EditWorkout() {
     const { id } = useParams();
 
     return (
-        <div>{id} edit</div>
+        <div>{id} edit
+             <AddExerciseInstance />
+        </div>
+   
     );
 }
